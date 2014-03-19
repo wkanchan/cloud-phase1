@@ -24,7 +24,7 @@ class Q2Controller < ApplicationController
 
 	def query_hbase(user_id, tweet_time)
 		require 'ok_hbase'
-		conn = OkHbase::Connection.new(host: 'ec2-54-85-62-128.compute-1.amazonaws.com', port: 9090, auto_connect:true )
+		conn = OkHbase::Connection.new(host: 'ec2-54-85-145-245.compute-1.amazonaws.com', port: 9090, auto_connect:true )
 		tweets = conn.table('tweets')
 		result = tweets.row(user_id + '|' + tweet_time)
 		render :text => TEAM_INFO_HEADER + "\n" + result['tweet_id:'].split(";").join("\n")
